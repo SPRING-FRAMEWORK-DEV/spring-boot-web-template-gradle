@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web','javax.servlet:jstl'
+	runtime('org.springframework.boot:spring-boot-devtools')
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat','org.apache.tomcat.embed:tomcat-embed-jasper','org.eclipse.jdt.core.compiler:ecj:4.6.1','org.webjars:bootstrap:3.3.7'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
